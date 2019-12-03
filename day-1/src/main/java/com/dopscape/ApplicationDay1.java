@@ -7,7 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Application {
+public class ApplicationDay1 {
 
    public static void main(String[] args) throws IOException {
        Set<Integer> input = input();

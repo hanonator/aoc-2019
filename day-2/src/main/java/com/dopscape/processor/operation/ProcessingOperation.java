@@ -1,4 +1,4 @@
-package com.dopscape.processor;
+package com.dopscape.processor.operation;
 
 import com.dopscape.memory.Memory;
 import com.dopscape.processor.instruction.*;

@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>day-1</module>
-        <module>util</module>
         <module>day-2</module>
     </modules>
     <packaging>pom</packaging>

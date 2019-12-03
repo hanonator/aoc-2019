@@ -2,14 +2,16 @@ package com.dopscape;
 
 import com.dopscape.memory.ArrayMemory;
 import com.dopscape.memory.Memory;
-import com.dopscape.processor.Operation;
+import com.dopscape.processor.operation.Operation;
+
+import java.util.Arrays;
 
 public class IntcodeComputer {
 
     private final Memory memory;
 
     public IntcodeComputer(int[] input) {
-        this.memory = new ArrayMemory(input);
+        this.memory = new ArrayMemory(Arrays.copyOf(input, input.length));
     }
 
     public IntcodeComputer execute(Operation operation) {
