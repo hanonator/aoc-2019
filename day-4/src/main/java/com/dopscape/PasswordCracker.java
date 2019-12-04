@@ -21,7 +21,6 @@ public class PasswordCracker {
         for (int i = LOWER_BOUNDS; i <= HIGHER_BOUNDS; i++) {
             if (verifier.verify(String.valueOf(i))) {
                 matches.add(i);
-                System.out.println(i);
             }
         }
         System.out.println("Total possibilities: " + matches.size());
