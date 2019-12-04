@@ -1,17 +1,19 @@
-package com.dopscape;
+package com.dopscape.wire;
 
-import com.dopscape.point.Point;
+import com.dopscape.Panel;
 
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class Wires {
 
     public static Wire build(String input) {
-        Set<Point> coordinates = new LinkedHashSet<>();
-        Point current = Panel.CONNECTOR_ORIGIN;
+        Set<WireNode> coordinates = new LinkedHashSet<>();
+        WireNode current = Panel.CONNECTOR_ORIGIN;
         for (String command : input.split(",")) {
-            Point coordinate = null;
+            WireNode coordinate = null;
             Direction direction = Direction.valueOf("" + command.charAt(0));
             int steps = Integer.valueOf(command.substring(1));
 
@@ -37,8 +39,8 @@ public class Wires {
             this.y = y;
         }
 
-        public Point offset(Point other) {
-            return new Point(other.getX() + x, other.getY() + y);
+        public WireNode offset(WireNode other) {
+            return new WireNode(other.getX() + x, other.getY() + y, other.getIndex() + 1);
         }
 
     }

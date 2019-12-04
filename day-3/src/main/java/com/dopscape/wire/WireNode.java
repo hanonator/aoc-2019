@@ -1,20 +1,24 @@
-package com.dopscape.point;
+package com.dopscape.wire;
 
 import java.util.Objects;
 
-public class Point {
-
-    public static final Point ORIGIN = new Point(10_000, 10_000);
+public class WireNode {
 
     private final int x;
     private final int y;
+    private int absoluteDistance;
 
-    public Point(int x, int y) {
+    public WireNode(int x, int y, int absoluteDistance) {
         this.x = x;
         this.y = y;
+        this.absoluteDistance = absoluteDistance;
     }
 
-    public int distance(Point other) {
+    public WireNode(WireNode other, int absoluteDistance) {
+        this (other.x, other.y, absoluteDistance);
+    }
+
+    public int distance(WireNode other) {
         return Math.abs(other.x - x) + Math.abs(other.y - y);
     }
 
@@ -22,8 +26,8 @@ public class Point {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Point point = (Point) o;
-        return x == point.x && y == point.y;
+        WireNode wireNode = (WireNode) o;
+        return x == wireNode.x && y == wireNode.y;
     }
 
     @Override
@@ -33,7 +37,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point{" +
+        return "WireNode{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
@@ -45,5 +49,9 @@ public class Point {
 
     public int getY() {
         return y;
+    }
+
+    public int getIndex() {
+        return absoluteDistance;
     }
 }

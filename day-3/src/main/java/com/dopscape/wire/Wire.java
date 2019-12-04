@@ -1,25 +1,25 @@
-package com.dopscape;
+package com.dopscape.wire;
 
-import com.dopscape.point.Point;
-
+import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 
 public class Wire {
 
     private final String name;
-    private final Set<Point> points;
+    private final Set<WireNode> wireNodes;
 
-    public Wire(String name, Set<Point> points) {
+    public Wire(String name, Set<WireNode> wireNodes) {
         this.name = name;
-        this.points = points;
+        this.wireNodes = wireNodes;
     }
 
     public String getName() {
         return name;
     }
 
-    public Set<Point> getPoints() {
-        return points;
+    public Set<WireNode> getWireNodes() {
+        return wireNodes;
     }
 
 }

@@ -1,4 +1,7 @@
-package com.dopscape;
+package com.dopscape.criteria;
 
-public class Criteria {
+public interface Criteria {
+
+    boolean apply(String input);
+
 }
