@@ -5,6 +5,7 @@ import com.dopscape.processor.instruction.*;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class DefaultInstructionSet implements InstructionSet{
@@ -12,7 +13,7 @@ public class DefaultInstructionSet implements InstructionSet{
     private static final Map<Integer, Instruction> instructionSet = new HashMap<>();
     private static final Instruction UNSUPPORTED_INSTRUCTION = new UnsupportedInstruction();
 
-    public DefaultInstructionSet(Supplier<Integer> in, OutputStream out) {
+    public DefaultInstructionSet(Supplier<Integer> in, Consumer<Integer> out) {
         instructionSet.put(1, new OperationInstruction(Integer::sum));
         instructionSet.put(2, new OperationInstruction((a, b) -> a * b));
 

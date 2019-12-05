@@ -17,7 +17,7 @@ public class IntcodeApplication {
                 System.out.print("Input: ");
                 return Integer.valueOf(s.nextLine());
             }
-        }, System.out)).process();
+        }, System.out::println)).process();
     }
 
 }
