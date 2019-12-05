@@ -5,7 +5,7 @@ public class ArrayMemory implements Memory {
     private final int[] memory;
     private int instructionPointer;
 
-    public ArrayMemory(int[] memory) {
+    public ArrayMemory(int... memory) {
         this.memory = memory;
     }
 

@@ -1,10 +1,15 @@
 package com.dopscape;
 
-import com.dopscape.processor.operation.ProcessingOperation;
+import com.dopscape.memory.ArrayMemory;
+import com.dopscape.memory.Memory;
+import com.dopscape.processor.Processor;
+import com.dopscape.processor.instruction.instructionset.DefaultInstructionSet;
+import com.dopscape.processor.instruction.instructionset.InstructionSet;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,8 +19,8 @@ public class IntcodeComputerTest {
     @ParameterizedTest
     @MethodSource("createSimpleInputSources")
     public void testSimpleIntcodeComputer(int[] input, int[] output) {
-        IntcodeComputer computer = new IntcodeComputer(input);
-        computer.execute(new ProcessingOperation());
+        Processor computer = new Processor(new ArrayMemory(input), new DefaultInstructionSet(null, null)); // can be null they dont use in/out
+        computer.process();
         assertThat(computer.getMemory().dump()).isEqualTo(output);
     }
 

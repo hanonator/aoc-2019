@@ -1,14 +1,18 @@
 package com.dopscape.processor.instruction;
 
 import com.dopscape.memory.Memory;
+import com.dopscape.processor.Parameter;
 
 public class MultiplicationInstruction implements Instruction {
 
     private static final int PARAMETER_COUNT = 3;
 
     @Override
-    public void execute(Memory memory, int[] parameters) {
-        memory.put(memory.get(parameters[0]) * memory.get(parameters[1]), parameters[2]);
+    public void execute(Memory memory, Parameter[] parameters) {
+        int factorA = parameters[0].getAdjustedValue(memory);
+        int factorB = parameters[1].getAdjustedValue(memory);
+
+        memory.put(factorA * factorB, parameters[2].getValue());
     }
 
     @Override

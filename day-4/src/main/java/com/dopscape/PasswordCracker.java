@@ -13,6 +13,7 @@ public class PasswordCracker {
     private static final int HIGHER_BOUNDS = 685979;
 
     public static void main(String[] args) {
+        // part 1
         PasswordVerifier verifier = new PasswordVerifier(Set.of(
                 new DoubleDigitCriteria(), new NonDecreasingCriteria()
         ));

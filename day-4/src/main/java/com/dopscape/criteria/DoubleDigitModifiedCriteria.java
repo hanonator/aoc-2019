@@ -1,8 +1,5 @@
 package com.dopscape.criteria;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 public class DoubleDigitModifiedCriteria implements Criteria {
 
     @Override

@@ -1,6 +1,7 @@
 package com.dopscape.processor.instruction;
 
 import com.dopscape.memory.Memory;
+import com.dopscape.processor.Parameter;
 
 public interface Instruction {
 
@@ -8,7 +9,7 @@ public interface Instruction {
      *
      * @param parameters
      */
-    void execute(Memory memory, int[] parameters);
+    void execute(Memory memory, Parameter[] parameters);
 
     /**
      *
