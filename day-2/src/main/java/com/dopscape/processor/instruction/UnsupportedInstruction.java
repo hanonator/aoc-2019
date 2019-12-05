@@ -7,7 +7,7 @@ public class UnsupportedInstruction implements Instruction {
 
     @Override
     public void execute(Memory memory, Parameter[] parameters) {
-        throw new UnsupportedOperationException("no instruction found for opcode [" + memory.step(-1) + "]");
+        throw new UnsupportedOperationException("no instruction found for opcode [" + memory.get() + "]");
     }
 
     @Override

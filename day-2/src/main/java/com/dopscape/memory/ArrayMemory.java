@@ -10,7 +10,7 @@ public class ArrayMemory implements Memory {
     }
 
     @Override
-    public void put(int value, int address) {
+    public void store(int value, int address) {
         memory[address] = value;
     }
 

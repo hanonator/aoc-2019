@@ -6,8 +6,8 @@ public class AlarmOperation implements Operation {
 
     @Override
     public void process(Memory memory) {
-        memory.put(12, 1);
-        memory.put(2, 2);
+        memory.store(12, 1);
+        memory.store(2, 2);
     }
 
 }

@@ -25,8 +25,10 @@ public class Processor {
             int instructionValue = memory.step();
             Instruction instruction = instructionSet.get(instructionValue % 100);
 
+            int memoryPosition = memory.position();
             int[] modes = instructionValue > 99 ? convertToArray(instructionValue / 100) : new int[0];
             Parameter[] parameters = new Parameter[instruction.getParameterCount()];
+
             for (int i = 0; i < parameters.length; i++) {
                 Mode mode = modes.length > i ? Mode.values()[modes[i]] : Mode.POSITION;
                 int value = memory.get(memory.position() + i);
@@ -35,7 +37,10 @@ public class Processor {
             }
 
             instruction.execute(memory, parameters);
-            memory.step(instruction.getParameterCount());
+
+            if (memory.position() == memoryPosition) {
+                memory.step(instruction.getParameterCount());
+            }
         }
         return this;
     }

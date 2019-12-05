@@ -2,7 +2,7 @@ package com.dopscape.memory;
 
 public interface Memory {
 
-    void put(int value, int address);
+    void store(int value, int address);
 
     int[] read(int length);
 
