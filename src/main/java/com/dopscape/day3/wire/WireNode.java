@@ -1,4 +1,4 @@
-package com.dopscape.wire;
+package com.dopscape.day3.wire;
 
 import java.util.Objects;
 

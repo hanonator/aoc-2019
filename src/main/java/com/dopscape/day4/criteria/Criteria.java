@@ -1,4 +1,4 @@
-package com.dopscape.criteria;
+package com.dopscape.day4.criteria;
 
 public interface Criteria {
 

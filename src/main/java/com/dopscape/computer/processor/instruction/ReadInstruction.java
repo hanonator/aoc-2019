@@ -1,7 +1,7 @@
-package com.dopscape.day2.processor.instruction;
+package com.dopscape.computer.processor.instruction;
 
-import com.dopscape.day2.memory.Memory;
-import com.dopscape.day2.processor.Parameter;
+import com.dopscape.computer.memory.Memory;
+import com.dopscape.computer.processor.Parameter;
 
 import java.util.function.Supplier;
 

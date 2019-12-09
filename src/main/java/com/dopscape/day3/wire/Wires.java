@@ -1,10 +1,8 @@
-package com.dopscape.wire;
+package com.dopscape.day3.wire;
 
-import com.dopscape.Panel;
+import com.dopscape.day3.Panel;
 
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
 public class Wires {

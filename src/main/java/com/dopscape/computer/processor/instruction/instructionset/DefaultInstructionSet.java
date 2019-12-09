@@ -1,6 +1,6 @@
-package com.dopscape.day2.processor.instruction.instructionset;
+package com.dopscape.computer.processor.instruction.instructionset;
 
-import com.dopscape.day2.processor.instruction.*;
+import com.dopscape.computer.processor.instruction.*;
 
 import java.util.HashMap;
 import java.util.Map;

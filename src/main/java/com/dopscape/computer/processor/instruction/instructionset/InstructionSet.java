@@ -1,6 +1,6 @@
-package com.dopscape.day2.processor.instruction.instructionset;
+package com.dopscape.computer.processor.instruction.instructionset;
 
-import com.dopscape.day2.processor.instruction.Instruction;
+import com.dopscape.computer.processor.instruction.Instruction;
 
 public interface InstructionSet {
 

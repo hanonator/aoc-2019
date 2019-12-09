@@ -1,7 +1,5 @@
-package com.dopscape.wire;
+package com.dopscape.day3.wire;
 
-import java.util.List;
-import java.util.Queue;
 import java.util.Set;
 
 public class Wire {
