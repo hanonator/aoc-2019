@@ -10,6 +10,7 @@ public class GraphApplication {
         Universe testUniverse = Universe.load(Paths.get(ClassLoader.getSystemResource("day6-input").toURI()));
 
         System.out.println(testUniverse.getTotalOrbits("COM"));
+        System.out.println(testUniverse.orbitTransfers("YOU", "SAN"));
     }
 
 }

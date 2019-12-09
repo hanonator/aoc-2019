@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Universe {
 
@@ -28,12 +30,38 @@ public class Universe {
         return new Universe(builder.build());
     }
 
-    public int getTotalOrbits(String start) {
-        return walkGraph(start, 0);
+    public int getTotalOrbits(String source) {
+        return walkGraph(source, 0);
     }
 
     private int walkGraph(String planet, int orbits) {
         return orbits + planets.successors(planet).stream().mapToInt(other -> walkGraph(other, orbits+1)).sum();
     }
 
+    public int orbitTransfers(String source, String destination) {
+        List<String> sourceSteps = trace(new ArrayList<>(), source, "COM").get();
+        List<String> destinationSteps = trace(new ArrayList<>(), destination, "COM").get();
+
+        for (String step : sourceSteps) {
+            if (destinationSteps.contains(step)) {
+                return sourceSteps.indexOf(step) + destinationSteps.indexOf(step) - 2;
+            }
+        }
+
+        throw new IllegalStateException("paths do not intersect");
+    }
+
+    private Optional<List<String>> trace(List<String> path, String source, String destination) {
+        path.add(source);
+        if (source.equals(destination)) {
+            return Optional.of(path);
+        }
+
+        String predecessor = planets.predecessors(source).stream().findFirst().orElse(null);
+        if (predecessor == null) {
+            return Optional.empty();
+        }
+
+        return trace(path, predecessor, destination);
+    }
 }
