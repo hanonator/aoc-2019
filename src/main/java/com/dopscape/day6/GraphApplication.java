@@ -9,7 +9,7 @@ public class GraphApplication {
     public static void main(String[] args) throws URISyntaxException, IOException {
         Universe testUniverse = Universe.load(Paths.get(ClassLoader.getSystemResource("day6-input").toURI()));
 
-        System.out.println(testUniverse.getTotalOrbits());
+        System.out.println(testUniverse.getTotalOrbits("COM"));
     }
 
 }

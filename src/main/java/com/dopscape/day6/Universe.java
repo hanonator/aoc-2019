@@ -28,8 +28,8 @@ public class Universe {
         return new Universe(builder.build());
     }
 
-    public int getTotalOrbits() {
-        return walkGraph("COM", 0);
+    public int getTotalOrbits(String start) {
+        return walkGraph(start, 0);
     }
 
     private int walkGraph(String planet, int orbits) {

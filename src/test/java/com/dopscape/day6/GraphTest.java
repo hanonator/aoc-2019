@@ -15,7 +15,7 @@ public class GraphTest {
     public void testTotalOrbits() throws URISyntaxException, IOException {
         Universe testUniverse = Universe.load(Paths.get(GraphTest.class.getClassLoader().getResource("day6-input-test").toURI()));
 
-        assertThat(testUniverse.getTotalOrbits()).isEqualTo(42);
+        assertThat(testUniverse.getTotalOrbits("COM")).isEqualTo(42);
     }
 
 }
