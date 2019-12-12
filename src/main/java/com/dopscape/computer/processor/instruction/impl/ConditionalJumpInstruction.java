@@ -1,7 +1,8 @@
-package com.dopscape.computer.processor.instruction;
+package com.dopscape.computer.processor.instruction.impl;
 
 import com.dopscape.computer.memory.Memory;
-import com.dopscape.computer.processor.Parameter;
+import com.dopscape.computer.processor.instruction.Parameter;
+import com.dopscape.computer.processor.instruction.Instruction;
 
 import java.util.function.Predicate;
 
