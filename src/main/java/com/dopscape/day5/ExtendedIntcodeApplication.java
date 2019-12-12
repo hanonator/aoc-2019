@@ -9,8 +9,9 @@ import java.net.URISyntaxException;
 public class ExtendedIntcodeApplication {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
-        int[] input = Input.readIntArray("day2-input");
-        new ExtendedIntcodeProcessor(new ArrayMemory(input), new ExtendedInstructionSet(() -> 5, System.out::println)).process();
+        int[] input = Input.readIntArray("day5-input");
+        new ExtendedIntcodeProcessor(new ExtendedInstructionSet(() -> 5, System.out::println))
+                .process(new ArrayMemory(input));
     }
 
 }

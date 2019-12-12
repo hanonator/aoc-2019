@@ -9,23 +9,24 @@ import com.dopscape.computer.processor.instruction.Parameter;
 
 public abstract class AbstractProcessor implements Processor {
 
-    private final Memory memory;
     private final InstructionSet instructionSet;
 
-    public AbstractProcessor(Memory memory, InstructionSet instructionSet) {
-        this.memory = memory;
+    public AbstractProcessor(InstructionSet instructionSet) {
         this.instructionSet = instructionSet;
     }
 
-    public Processor process() {
+    public Processor process(Memory memory) {
         while (memory.position() < memory.limit()) {
             int currentPos = memory.position();
 
             Instruction instruction = instructionSet.get(memory.read() % 100);
             instruction.execute(memory, getParameters(memory, instruction, memory.read() / 100));
 
+            System.out.println(instruction.getClass() + ": (" + instruction.getParameterCount() + ");");
+
             if (memory.position() == currentPos)
                 memory.skip(instruction.getParameterCount() + 1);
+
         }
         return this;
     }

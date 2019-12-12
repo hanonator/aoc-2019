@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class Input {
 
     public static int[] readIntArray(String filename) throws URISyntaxException, IOException {
-        return Files.readAllLines(Paths.get(IntcodeApplication.class.getClassLoader().getResource("day2-input").toURI()))
+        return Files.readAllLines(Paths.get(IntcodeApplication.class.getClassLoader().getResource(filename).toURI()))
                 .stream()
                 .flatMap(line -> Stream.of(line.split(",")))
                 .mapToInt(Integer::valueOf)

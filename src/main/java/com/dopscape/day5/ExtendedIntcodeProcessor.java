@@ -9,8 +9,8 @@ import com.dopscape.computer.processor.instruction.Parameter;
 
 public class ExtendedIntcodeProcessor extends AbstractProcessor {
 
-    public ExtendedIntcodeProcessor(Memory memory, InstructionSet instructionSet) {
-        super(memory, instructionSet);
+    public ExtendedIntcodeProcessor(InstructionSet instructionSet) {
+        super(instructionSet);
     }
 
     @Override

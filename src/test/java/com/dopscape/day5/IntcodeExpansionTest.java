@@ -20,8 +20,8 @@ public class IntcodeExpansionTest {
         Memory memory = new ArrayMemory(1002,4,3,4,33);
 
         AtomicInteger output = new AtomicInteger();
-        Processor processor = new ExtendedIntcodeProcessor(memory, new ExtendedInstructionSet(() -> 10, output::set));
-        processor.process();
+        Processor processor = new ExtendedIntcodeProcessor(new ExtendedInstructionSet(() -> 10, output::set));
+        processor.process(memory);
 
         assertThat(memory.get(4)).isEqualTo(99);
     }
@@ -31,8 +31,8 @@ public class IntcodeExpansionTest {
         Memory memory = new ArrayMemory(3, 0, 99);
 
         AtomicInteger output = new AtomicInteger();
-        Processor processor = new ExtendedIntcodeProcessor(memory, new ExtendedInstructionSet(() -> 10, output::set));
-        processor.process();
+        Processor processor = new ExtendedIntcodeProcessor(new ExtendedInstructionSet(() -> 10, output::set));
+        processor.process(memory);
 
         assertThat(memory.get(0)).isEqualTo(10);
     }
@@ -45,8 +45,8 @@ public class IntcodeExpansionTest {
                 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99);
 
         AtomicInteger variable = new AtomicInteger();
-        Processor processor = new ExtendedIntcodeProcessor(memory, new ExtendedInstructionSet(() -> input, variable::set));
-        processor.process();
+        Processor processor = new ExtendedIntcodeProcessor(new ExtendedInstructionSet(() -> input, variable::set));
+        processor.process(memory);
 
         assertThat(variable.get()).isEqualTo(output);
     }

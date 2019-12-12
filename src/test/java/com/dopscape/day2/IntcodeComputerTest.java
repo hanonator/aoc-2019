@@ -16,8 +16,8 @@ public class IntcodeComputerTest {
     @MethodSource("createSimpleInputSources")
     public void testSimpleIntcodeComputer(int[] input, int[] output) {
         ArrayMemory memory = new ArrayMemory(input);
-        Processor processor = new SimpleIntcodeProcessor(memory, new SimpleInstructionSet()); // can be null they dont use in/out
-        processor.process();
+        Processor processor = new SimpleIntcodeProcessor(new SimpleInstructionSet());
+        processor.process(memory);
         assertThat(memory.array()).isEqualTo(output);
     }
 

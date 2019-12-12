@@ -24,12 +24,12 @@ public class IntcodeApplication {
 
         // part 1
         var part1 = new ArrayMemory(Arrays.copyOf(input, input.length));
-        var processor = new SimpleIntcodeProcessor(part1, new SimpleInstructionSet());
+        var processor = new SimpleIntcodeProcessor(new SimpleInstructionSet());
 
         part1.store(12, 1);
         part1.store(2, 2);
 
-        processor.process();
+        processor.process(part1);
 
         System.out.println(part1.get(0));
 
@@ -37,12 +37,12 @@ public class IntcodeApplication {
         for (int noun = 0; noun < RANGE; noun++) {
             for (int verb = 0; verb < RANGE; verb++) {
                 var memory = new ArrayMemory(Arrays.copyOf(input, input.length));
-                var computer = new SimpleIntcodeProcessor(memory, new SimpleInstructionSet());
+                var computer = new SimpleIntcodeProcessor(new SimpleInstructionSet());
 
                 memory.store(noun, 1);
                 memory.store(verb, 2);
 
-                computer.process();
+                computer.process(memory);
 
                 if (memory.get(0) == TARGET_NUMBER) {
                     System.out.println(noun + "" + verb);
