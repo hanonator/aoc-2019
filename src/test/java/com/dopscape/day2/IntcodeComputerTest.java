@@ -2,7 +2,6 @@ package com.dopscape.day2;
 
 import com.dopscape.computer.memory.ArrayMemory;
 import com.dopscape.computer.processor.Processor;
-import com.dopscape.computer.processor.instruction.instructionset.DefaultInstructionSet;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -16,9 +15,10 @@ public class IntcodeComputerTest {
     @ParameterizedTest
     @MethodSource("createSimpleInputSources")
     public void testSimpleIntcodeComputer(int[] input, int[] output) {
-        Processor computer = new Processor(new ArrayMemory(input), new DefaultInstructionSet(null, null)); // can be null they dont use in/out
-        computer.process();
-        assertThat(computer.getMemory().dump()).isEqualTo(output);
+        ArrayMemory memory = new ArrayMemory(input);
+        Processor processor = new SimpleIntcodeProcessor(memory, new SimpleInstructionSet()); // can be null they dont use in/out
+        processor.process();
+        assertThat(memory.array()).isEqualTo(output);
     }
 
     private static Stream<Arguments> createSimpleInputSources() {

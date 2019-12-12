@@ -1,5 +1,7 @@
 package com.dopscape.computer.memory;
 
+import java.util.Arrays;
+
 public class ArrayMemory implements Memory {
 
     private final int[] memory;
@@ -29,17 +31,7 @@ public class ArrayMemory implements Memory {
     }
 
     @Override
-    public int get() {
-        return memory[instructionPointer];
-    }
-
-    @Override
-    public int step() {
-        return get(instructionPointer++);
-    }
-
-    @Override
-    public int step(int steps) {
+    public int skip(int steps) {
         return instructionPointer += steps;
     }
 
@@ -58,8 +50,15 @@ public class ArrayMemory implements Memory {
         return memory.length;
     }
 
-    @Override
-    public int[] dump() {
+    public int[] array() {
         return memory;
+    }
+
+    @Override
+    public String toString() {
+        return "ArrayMemory{" +
+                "memory=" + Arrays.toString(memory) +
+                ", instructionPointer=" + instructionPointer +
+                '}';
     }
 }

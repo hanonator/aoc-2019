@@ -1,15 +1,13 @@
-package com.dopscape.day2;
+package com.dopscape.day5;
 
 import com.dopscape.computer.memory.ArrayMemory;
 import com.dopscape.computer.memory.Memory;
 import com.dopscape.computer.processor.Processor;
-import com.dopscape.computer.processor.instruction.instructionset.DefaultInstructionSet;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
@@ -22,7 +20,7 @@ public class IntcodeExpansionTest {
         Memory memory = new ArrayMemory(1002,4,3,4,33);
 
         AtomicInteger output = new AtomicInteger();
-        Processor processor = new Processor(memory, new DefaultInstructionSet(() -> 10, output::set));
+        Processor processor = new ExtendedIntcodeProcessor(memory, new ExtendedInstructionSet(() -> 10, output::set));
         processor.process();
 
         assertThat(memory.get(4)).isEqualTo(99);
@@ -33,7 +31,7 @@ public class IntcodeExpansionTest {
         Memory memory = new ArrayMemory(3, 0, 99);
 
         AtomicInteger output = new AtomicInteger();
-        Processor processor = new Processor(memory, new DefaultInstructionSet(() -> 10, output::set));
+        Processor processor = new ExtendedIntcodeProcessor(memory, new ExtendedInstructionSet(() -> 10, output::set));
         processor.process();
 
         assertThat(memory.get(0)).isEqualTo(10);
@@ -47,10 +45,8 @@ public class IntcodeExpansionTest {
                 999,1105,1,46,1101,1000,1,20,4,20,1105,1,46,98,99);
 
         AtomicInteger variable = new AtomicInteger();
-        Processor processor = new Processor(memory, new DefaultInstructionSet(() -> input, variable::set));
+        Processor processor = new ExtendedIntcodeProcessor(memory, new ExtendedInstructionSet(() -> input, variable::set));
         processor.process();
-
-        System.out.println(Arrays.toString(memory.dump()));
 
         assertThat(variable.get()).isEqualTo(output);
     }

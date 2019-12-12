@@ -1,7 +1,7 @@
 package com.dopscape.computer.processor.operation;
 
 import com.dopscape.computer.memory.Memory;
-import com.dopscape.computer.processor.instruction.UnsupportedInstruction;
+import com.dopscape.computer.processor.instruction.impl.UnsupportedInstruction;
 
 public class AlarmOperation implements UnsupportedInstruction.Operation {
 

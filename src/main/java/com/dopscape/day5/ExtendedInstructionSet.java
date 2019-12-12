@@ -1,18 +1,20 @@
-package com.dopscape.computer.processor.instruction.instructionset;
+package com.dopscape.day5;
 
-import com.dopscape.computer.processor.instruction.*;
+import com.dopscape.computer.processor.instruction.Instruction;
+import com.dopscape.computer.processor.instruction.InstructionSet;
+import com.dopscape.computer.processor.instruction.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class DefaultInstructionSet implements InstructionSet{
+public class ExtendedInstructionSet implements InstructionSet {
 
     private static final Map<Integer, Instruction> instructionSet = new HashMap<>();
     private static final Instruction UNSUPPORTED_INSTRUCTION = new UnsupportedInstruction();
 
-    public DefaultInstructionSet(Supplier<Integer> in, Consumer<Integer> out) {
+    public ExtendedInstructionSet(Supplier<Integer> in, Consumer<Integer> out) {
         instructionSet.put(1, new OperationInstruction(Integer::sum));
         instructionSet.put(2, new OperationInstruction((a, b) -> a * b));
 

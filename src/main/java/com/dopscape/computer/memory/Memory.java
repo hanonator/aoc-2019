@@ -6,13 +6,9 @@ public interface Memory {
 
     int[] read(int length);
 
-    int get();
-
-    int step();
-
     int get(int address);
 
-    int step(int steps);
+    int skip(int steps);
 
     int position();
 
@@ -20,6 +16,12 @@ public interface Memory {
 
     int limit();
 
-    int[] dump();
+    default int get() {
+        return get(this.position());
+    }
+
+    default int read() {
+        return read(1)[0];
+    }
 
 }
