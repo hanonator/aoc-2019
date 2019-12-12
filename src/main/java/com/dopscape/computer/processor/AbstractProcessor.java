@@ -22,8 +22,6 @@ public abstract class AbstractProcessor implements Processor {
             Instruction instruction = instructionSet.get(memory.read() % 100);
             instruction.execute(memory, getParameters(memory, instruction, memory.read() / 100));
 
-            System.out.println(instruction.getClass() + ": (" + instruction.getParameterCount() + ");");
-
             if (memory.position() == currentPos)
                 memory.skip(instruction.getParameterCount() + 1);
 
