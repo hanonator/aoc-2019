@@ -1,11 +1,10 @@
 package com.dopscape.computer.processor;
 
 import com.dopscape.computer.memory.Memory;
-import com.dopscape.computer.processor.Processor;
 import com.dopscape.computer.processor.instruction.Instruction;
 import com.dopscape.computer.processor.instruction.InstructionSet;
-import com.dopscape.computer.processor.instruction.Mode;
 import com.dopscape.computer.processor.instruction.Parameter;
+import com.dopscape.computer.processor.instruction.impl.ExitInstruction;
 
 public abstract class AbstractProcessor implements Processor {
 
@@ -16,6 +15,7 @@ public abstract class AbstractProcessor implements Processor {
     }
 
     public Processor process(Memory memory) {
+        memory.position(0);
         while (memory.position() < memory.limit()) {
             int currentPos = memory.position();
 
@@ -24,7 +24,6 @@ public abstract class AbstractProcessor implements Processor {
 
             if (memory.position() == currentPos)
                 memory.skip(instruction.getParameterCount() + 1);
-
         }
         return this;
     }

@@ -8,6 +8,7 @@ public class ExitInstruction implements Instruction {
 
     @Override
     public void execute(Memory memory, Parameter[] parameters) {
+        System.out.println("yes");
         memory.position(memory.limit());
     }
 
