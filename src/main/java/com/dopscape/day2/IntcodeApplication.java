@@ -4,6 +4,7 @@ import com.dopscape.computer.memory.ArrayMemory;
 import com.dopscape.computer.memory.Memory;
 import com.dopscape.computer.processor.Processor;
 import com.dopscape.day5.ExtendedInstructionSet;
+import com.dopscape.util.Input;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,11 +20,7 @@ public class IntcodeApplication {
     private static final int TARGET_NUMBER = 19690720;
 
     public static void main(String[] args) throws URISyntaxException, IOException {
-        int[] input = Files.readAllLines(Paths.get(IntcodeApplication.class.getClassLoader().getResource("day2-input").toURI()))
-            .stream()
-            .flatMap(line -> Stream.of(line.split(",")))
-            .mapToInt(Integer::valueOf)
-            .toArray();
+        int[] input = Input.readIntArray("day2-input");
 
         // part 1
         var part1 = new ArrayMemory(Arrays.copyOf(input, input.length));
