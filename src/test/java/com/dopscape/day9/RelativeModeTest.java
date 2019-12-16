@@ -4,13 +4,17 @@ import com.dopscape.day5.IOInstructionSet;
 import com.dopscape.intcode.memory.ArrayMemory;
 import com.dopscape.intcode.memory.ListMemory;
 import com.dopscape.intcode.processor.SimpleProcessor;
+import com.dopscape.util.Input;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,6 +50,24 @@ public class RelativeModeTest {
         var processor = new SimpleProcessor(new ListMemory(new ArrayList<>(program)), new IOInstructionSet(null, out::add));
         processor.process();
         assertThat(out).isEqualTo(List.of(expected));
+    }
+
+    @Test
+    public void testPart1() throws IOException, URISyntaxException {
+        var output = new AtomicLong();
+        var memory = ListMemory.wrap(Input.readIntArray("day9-input"));
+        var processor = new SimpleProcessor(memory, new IOInstructionSet(() -> 1L, output::set));
+        processor.process();
+        assertThat(output.get()).isEqualTo(3335138414L);
+    }
+
+    @Test
+    public void testPart2() throws IOException, URISyntaxException {
+        var output = new AtomicLong();
+        var memory = ListMemory.wrap(Input.readIntArray("day9-input"));
+        var processor = new SimpleProcessor(memory, new IOInstructionSet(() -> 2L, output::set));
+        processor.process();
+        assertThat(output.get()).isEqualTo(49122);
     }
 
 }
