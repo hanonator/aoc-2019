@@ -3,11 +3,11 @@ package com.dopscape.day7.part1;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class Thruster implements Supplier<Integer>, Consumer<Integer> {
+public class Thruster implements Supplier<Long>, Consumer<Long> {
 
     private final int index;
     private Thruster previous;
-    private int output;
+    private long output;
     private int cycle;
 
     public Thruster(Thruster previous, int index) {
@@ -17,7 +17,7 @@ public class Thruster implements Supplier<Integer>, Consumer<Integer> {
         System.out.println(index);
     }
 
-    public int getOutput() {
+    public long getOutput() {
         return output;
     }
 
@@ -26,15 +26,15 @@ public class Thruster implements Supplier<Integer>, Consumer<Integer> {
     }
 
     @Override
-    public void accept(Integer integer) {
+    public void accept(Long integer) {
         this.output = integer;
         System.out.println("setting: " + integer);
     }
 
     @Override
-    public Integer get() {
+    public Long get() {
         if (previous == null)
-            return 0;
+            return 0L;
         System.out.println("thruster[" + index + "," + output + "] providing: " + (cycle % 2 == 0 ? index : previous.output));
         return previous.output;
     }

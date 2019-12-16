@@ -11,11 +11,11 @@ import java.util.stream.Stream;
 
 public class Input {
 
-    public static int[] readIntArray(String filename) throws URISyntaxException, IOException {
+    public static long[] readIntArray(String filename) throws URISyntaxException, IOException {
         return Files.readAllLines(Paths.get(IntcodeApplication.class.getClassLoader().getResource(filename).toURI()))
                 .stream()
                 .flatMap(line -> Stream.of(line.split(",")))
-                .mapToInt(Integer::valueOf)
+                .mapToLong(Long::valueOf)
                 .toArray();
     }
 
