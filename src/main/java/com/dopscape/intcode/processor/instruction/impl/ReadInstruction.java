@@ -2,18 +2,24 @@ package com.dopscape.intcode.processor.instruction.impl;
 
 import com.dopscape.intcode.Memory;
 import com.dopscape.intcode.processor.Parameter;
-import com.dopscape.intcode.processor.instruction.Instruction;
+import com.dopscape.intcode.processor.ParameterMode;
 
-public class IOInstruction implements Instruction {
+import java.util.function.Supplier;
 
-    @Override
-    public void execute(Memory memory, Parameter[] parameters) {
-        
+public class ReadInstruction extends AbstractInstruction {
+
+    private static final int PARAMETER_COUNT = 1;
+
+    private final Supplier<Long> supplier;
+
+    public ReadInstruction(Supplier<Long> supplier) {
+        super(PARAMETER_COUNT);
+        this.supplier = supplier;
     }
 
     @Override
-    public int length() {
-        return 1;
+    public void execute(Memory memory, Parameter[] params) {
+        memory.write(supplier.get(), params[0]);
     }
 
 }

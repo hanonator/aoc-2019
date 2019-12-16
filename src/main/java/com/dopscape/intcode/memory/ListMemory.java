@@ -4,30 +4,36 @@ import com.dopscape.intcode.Memory;
 
 import java.util.ArrayList;
 
-public class IOMemory extends AbstractMemory {
+public class ListMemory extends AbstractMemory {
 
     private final ArrayList<Long> memory;
 
-    public IOMemory(ArrayList<Long> memory) {
+    public ListMemory(ArrayList<Long> memory) {
         this.memory = memory;
     }
 
-    public static IOMemory wrap(long[] input) {
+    public static ListMemory wrap(long... input) {
         var list = new ArrayList<Long>();
-        for (long l : input)
+        for (var l : input)
             list.add(l);
-        return new IOMemory(list);
+        return new ListMemory(list);
     }
 
     @Override
     public Memory write(long value, int address) {
+        while (memory.size() <= address)
+            memory.add(0L);
         memory.set(address, value);
         return this;
     }
 
     @Override
-    public long read(int address) {
-        return memory.get(address);
+    public long peek(int address) {
+        return address > memory.size() ? 0L : memory.get(address);
     }
 
+    @Override
+    public int capacity() {
+        return memory.size();
+    }
 }

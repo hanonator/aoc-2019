@@ -1,24 +1,21 @@
-package com.dopscape.computer.processor.instruction.impl;
+package com.dopscape.intcode.processor.instruction.impl;
 
-import com.dopscape.computer.memory.Memory;
-import com.dopscape.computer.processor.instruction.Parameter;
-import com.dopscape.computer.processor.instruction.Instruction;
 
-public class UnsupportedInstruction implements Instruction {
+import com.dopscape.intcode.Memory;
+import com.dopscape.intcode.processor.Parameter;
+import com.dopscape.intcode.processor.instruction.Instruction;
+
+public class UnsupportedInstruction extends AbstractInstruction {
+
+    private static final int PARAMETER_COUNT = 0;
+
+    public UnsupportedInstruction() {
+        super(PARAMETER_COUNT);
+    }
 
     @Override
     public void execute(Memory memory, Parameter[] parameters) {
-        throw new UnsupportedOperationException("no instruction found for opcode [" + memory.get() + "]");
+        throw new UnsupportedOperationException("no instruction found for opcode [" + memory.peek() + "]");
     }
 
-    @Override
-    public int getParameterCount() {
-        return 0;
-    }
-
-    public static interface Operation {
-
-        void process(Memory memory);
-
-    }
 }
