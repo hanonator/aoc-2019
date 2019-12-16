@@ -16,6 +16,15 @@ public class Station extends Asteroid {
     }
 
     @Override
+    public String toString() {
+        return "Station{" +
+                "visibleAsteroids=" + visibleAsteroids +
+                "x=" + super.getX() +
+                "y=" + super.getY() +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

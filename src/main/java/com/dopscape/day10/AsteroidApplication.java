@@ -12,7 +12,7 @@ public class AsteroidApplication {
     public static void main(String[] args) throws URISyntaxException, IOException {
         var map = Map.of(Files.readAllLines(Path.of(Resources.getResource("day10-input").toURI())));
 
-        System.out.println(map.getClosestStation().orElseThrow().getVisibleAsteroids());
+        System.out.println(map.getStation().orElseThrow());
     }
 
 }
