@@ -1,6 +1,7 @@
 package com.dopscape.util;
 
 import com.dopscape.day2.IntcodeApplication;
+import com.google.common.io.Resources;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
 public class Input {
 
     public static long[] readIntArray(String filename) throws URISyntaxException, IOException {
-        return Files.readAllLines(Paths.get(IntcodeApplication.class.getClassLoader().getResource(filename).toURI()))
+        return Files.readAllLines(Paths.get(Resources.getResource(filename).toURI()))
                 .stream()
                 .flatMap(line -> Stream.of(line.split(",")))
                 .mapToLong(Long::valueOf)

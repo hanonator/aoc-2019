@@ -1,7 +1,6 @@
 package com.dopscape.day10;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Map {
 
@@ -12,15 +11,11 @@ public class Map {
     }
 
     public static Map of(List<String> lines) {
-        Asteroid origin = null;
         var asteroids = new ArrayList<Asteroid>();
         for (int x = 0; x < lines.get(0).length(); x++) {
             for (int y = 0; y < lines.size(); y++) {
                 if (lines.get(y).charAt(x) == '#') {
                     asteroids.add(new Asteroid(x, y));
-                }
-                else if (lines.get(y).charAt(x) == 'X') {
-                    origin = new Asteroid(x, y);
                 }
             }
         }
